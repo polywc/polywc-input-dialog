@@ -14,6 +14,11 @@
             function handleOpenOnClick() {
                 var inputbox = document.createElement('polywc-input-dialog');
                 document.body.appendChild(inputbox);
+                inputbox.addEventListener("confirm", function (event) {
+                    var detail = event.detail;
+                    console.log("confirm");
+                    debugger;
+                });
                 inputbox.open("Your name", "What's your name?", "Mario Rossi");
             }//EndFunction.
 
