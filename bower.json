@@ -1,0 +1,23 @@
+{
+  "name": "polywc-input-dialog",
+  "homepage": "https://github.com/polywc/polywc-input-dialog",
+  "authors": [
+    "'Donato <'donatopirozzi@gmail.com'>"
+  ],
+  "description": "",
+  "main": "polywc-input-dialog.html",
+  "license": "LGPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.4.0",
+    "paper-input": "PolymerElements/paper-input#^1.1.18",
+    "paper-dialog": "PolymerElements/paper-dialog#~1.0.4",
+    "paper-button": "PolymerElements/paper-button#^1.0.12"
+  }
+}
