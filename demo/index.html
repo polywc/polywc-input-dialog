@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html>
+    <head>
+        <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="../polywc-input-dialog.html">
+    </head>
+    <body>
+
+        <input type="button" onclick="handleOpenOnClick()" value="open">
+
+        <script type="text/javascript">
+
+            function handleOpenOnClick() {
+                var inputbox = document.createElement('polywc-input-dialog');
+                document.body.appendChild(inputbox);
+                inputbox.open("Your name", "What's your name?", "Mario Rossi");
+            }//EndFunction.
+
+        </script>
+
+    </body>
+</html>

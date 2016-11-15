@@ -27,17 +27,29 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
 
 <dom-module id="polywc-input-dialog">
 	<template>
-		<paper-dialog id="dlg">
-			<h2 id="dlgTitle">[[title]]</h2>
-			<p>[[message]]</p>
+        <style is="custom-style">
+            paper-dialog > *:first-child {
+                margin-top: 0px;
+            }
 
-            <paper-input id="txtinput" value="{{}}"></paper-input>
+            paper-toolbar {
+                margin-top: 0px;
+                --paper-toolbar-height: 48px;
+            }
+        </style>
+		<paper-dialog id="dlg" modal>
+            <paper-toolbar>
+                <span class="title">[[title]]</span>
+            </paper-toolbar>
+
+            <paper-input id="txtinput" label="[[label]]" value="{{value}}"></paper-input>
 			<div class="buttons">
-			    <paper-button dialog-dismiss>Annulla</paper-button>
-			    <paper-button dialog-confirm autofocus on-click="_handleAcceptClick">Conferma</paper-button>
+			    <paper-button dialog-dismiss on-click="_handleCancelClick">Cancel</paper-button>
+			    <paper-button dialog-confirm autofocus on-click="_handleAcceptClick">Confirm</paper-button>
 		 	</div>
 		</paper-dialog>
 	</template>
@@ -47,21 +59,25 @@
 			
 			properties: {
 				title: 		{ type: String, value: 'Title' },
-				message: 	{ type: String, value: 'Message dialog' },
+				label: 	    { type: String, value: 'Message dialog' },
                 value:      { type: String, value: '', notify: true }
 			},
 			
-			open: function(title, message, defaultvalue) {
+			open: function(title, label, defaultvalue) {
 				if (typeof title !== 'undefined') this.title = title;
-				if (typeof message !== 'undefined') this.message = message;
+				if (typeof label !== 'undefined') this.label = label;
                 if (typeof defaultvalue !== 'undefined') this.value = defaultvalue;
 				this.$.dlg.open();
 			},
 			
 			_handleAcceptClick: function(event) {
 				var detail = { value: this.value };
-				this.fire('delete', null);
-			}
+				this.fire('confirm', null);
+			},
+
+            _handleCancelClick: function () {
+                this.fire('cancel');
+            }
 		
 		});
 	</script>
